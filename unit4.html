@@ -28,10 +28,10 @@
             margin: 20px auto;
             padding: 20px;
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        h2 {
+        h2, h3 {
             color: #4a4e69;
         }
         p {
@@ -49,45 +49,39 @@
             width: 100%;
             text-align: left;
             outline: none;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .collapsible:hover {
             background-color: #61678f;
         }
         .collapsible:after {
-            content: '\002B';
+            content: '\25BC';
             font-weight: bold;
             float: right;
         }
         .collapsible.active:after {
-            content: '\2212';
+            content: '\25B2';
         }
         .collapsible-content {
             display: none;
             padding: 15px;
-            border-top: 2px solid #ddd;
+            margin-top: 5px;
+            border-radius: 12px;
+            background-color: #f9f9fb;
+            border: 1px solid #ddd;
+            transition: max-height 0.2s ease-out;
         }
 
-        /* Tooltip Styles */
-        .tooltip {
-            position: relative;
-            cursor: pointer;
-            color: #007acc;
-            text-decoration: underline;
-        }
-        .tooltip:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 5px;
-            font-size: 0.9rem;
-            background-color: #333;
-            color: #fff;
-            border-radius: 4px;
-            white-space: nowrap;
-            z-index: 1;
+        /* Code Styling */
+        pre {
+            background-color: #f4f4f9;
+            padding: 10px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 1rem;
+            color: #333;
+            font-family: Consolas, monospace;
         }
 
         /* Footer Styles */
@@ -108,21 +102,60 @@
 
     <div class="content">
         <h2>Overview of Topics</h2>
-        <p>In this unit, we explore essential techniques such as <span class="tooltip" data-tooltip="Divides a problem into overlapping subproblems.">Dynamic Programming</span>, <span class="tooltip" data-tooltip="Uses locally optimal choices to solve complex problems.">Greedy Algorithms</span>, and critical sorting algorithms.</p>
+        <p>In this unit, we explore essential techniques such as <span class="tooltip" data-tooltip="Divides a problem into overlapping subproblems.">Dynamic Programming</span>, <span class="tooltip" data-tooltip="Uses locally optimal choices to solve complex problems.">Greedy Algorithms</span>, and key sorting algorithms. Each approach is foundational to solving complex computational problems efficiently.</p>
 
         <button class="collapsible">Dynamic Programming</button>
         <div class="collapsible-content">
             <p>Dynamic Programming (DP) is a technique for solving complex problems by breaking them down into simpler subproblems. It is often used for problems with overlapping subproblems and optimal substructure, such as the Knapsack problem and the Longest Common Subsequence.</p>
+            <h3>Example Code:</h3>
+            <pre><code>def fibonacci(n):
+    dp = [0, 1] + [0] * (n - 1)
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n]
+</code></pre>
         </div>
 
         <button class="collapsible">Greedy Algorithms</button>
         <div class="collapsible-content">
             <p>Greedy Algorithms make a sequence of choices, each of which looks the best at the moment, to find an overall optimal solution. Examples include the Activity Selection Problem and Huffman Coding.</p>
+            <h3>Example Code:</h3>
+            <pre><code>def activity_selection(activities):
+    activities.sort(key=lambda x: x[1])
+    selected = [activities[0]]
+    for i in range(1, len(activities)):
+        if activities[i][0] >= selected[-1][1]:
+            selected.append(activities[i])
+    return selected
+</code></pre>
         </div>
 
         <button class="collapsible">Sorting Algorithms</button>
         <div class="collapsible-content">
             <p>Sorting algorithms like Merge Sort and Quick Sort are essential for data organization and preprocessing in computer science, offering efficient ways to handle data for further processing.</p>
+            <h3>Example Code:</h3>
+            <pre><code>def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+</code></pre>
+        </div>
+
+        <button class="collapsible">Interview Questions & Answers</button>
+        <div class="collapsible-content">
+            <h3><strong>Interview Questions</strong></h3>
+            <p><strong>Q1:</strong> What is the difference between Dynamic Programming and Greedy Algorithms?</p>
+            <p><strong>Answer:</strong> Dynamic Programming solves problems with overlapping subproblems by storing results of subproblems, making it ideal for problems with optimal substructure. Greedy algorithms, on the other hand, make a sequence of locally optimal choices to arrive at a solution and are suitable for optimization problems without needing stored solutions.</p>
+
+            <p><strong>Q2:</strong> Can you give an example where Greedy Algorithm fails?</p>
+            <p><strong>Answer:</strong> The Knapsack problem can’t be solved optimally with a Greedy Algorithm, as it doesn’t account for all possible combinations, whereas Dynamic Programming does.</p>
+
+            <p><strong>Q3:</strong> When would you choose Quick Sort over Merge Sort?</p>
+            <p><strong>Answer:</strong> Quick Sort is often faster for in-memory sorting due to its partitioning approach and smaller constant factors, whereas Merge Sort is more stable for external sorting as it consistently requires O(n log n) time.</p>
         </div>
 
         <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
@@ -135,6 +168,7 @@
                 this.classList.toggle("active");
                 const content = this.nextElementSibling;
                 content.style.display = content.style.display === "block" ? "none" : "block";
+                content.style.transition = "max-height 0.3s ease";
             });
         });
     </script>

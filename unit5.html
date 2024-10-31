@@ -28,7 +28,7 @@
             margin: 20px auto;
             padding: 20px;
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         h2 {
@@ -49,23 +49,28 @@
             width: 100%;
             text-align: left;
             outline: none;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .collapsible:hover {
             background-color: #61678f;
         }
         .collapsible:after {
-            content: '\002B';
+            content: '\25BC';
             font-weight: bold;
             float: right;
         }
         .collapsible.active:after {
-            content: '\2212';
+            content: '\25B2';
         }
         .collapsible-content {
             display: none;
             padding: 15px;
-            border-top: 2px solid #ddd;
+            border-radius: 12px;
+            background-color: #f9f9fb;
+            border: 1px solid #ddd;
+            margin-top: 5px;
+            transition: max-height 0.3s ease-out;
         }
 
         /* Tooltip Styles */
@@ -108,31 +113,31 @@
 
     <div class="content">
         <h2>Overview of Topics</h2>
-        <p>This unit covers specialized algorithms such as <span class="tooltip" data-tooltip="Used for finding patterns in a text string.">Pattern Matching</span> and <span class="tooltip" data-tooltip="A method to compute the maximum flow in a flow network.">Network Flow Algorithms</span>.</p>
+        <p>This unit covers specialized algorithms such as <span class="tooltip" data-tooltip="Used for finding patterns in a text string.">Pattern Matching</span> and <span class="tooltip" data-tooltip="A method to compute the maximum flow in a flow network.">Network Flow Algorithms</span>, both of which have significant applications in areas like text processing and network optimization.</p>
 
         <button class="collapsible">Naive Pattern Matching</button>
         <div class="collapsible-content">
-            <p>The Naive Pattern Matching algorithm checks for the presence of a substring in a string by trying every possible position. It's simple but can be inefficient for larger texts.</p>
+            <p>The Naive Pattern Matching algorithm checks each possible position in a text string for a match with a given pattern. Although simple to understand and implement, it can be inefficient for long texts, as it requires O(m*n) time for matching a pattern of length *m* in a text of length *n*. This algorithm is mainly used for small text searches or educational purposes.</p>
         </div>
 
         <button class="collapsible">KMP (Knuth-Morris-Pratt) Algorithm</button>
         <div class="collapsible-content">
-            <p>The KMP algorithm improves pattern matching efficiency by using precomputed information about the pattern to skip unnecessary comparisons.</p>
+            <p>The KMP algorithm efficiently searches for a pattern in a text by preprocessing the pattern to create a partial match table, which allows it to skip unnecessary comparisons. By avoiding redundant re-checks of characters, KMP reduces the time complexity to O(m + n). This algorithm is particularly useful in applications where repeated pattern matching is necessary, like DNA sequence matching or text editors.</p>
         </div>
 
         <button class="collapsible">Boyer-Moore Algorithm</button>
         <div class="collapsible-content">
-            <p>The Boyer-Moore algorithm skips sections of the text being searched based on the mismatched characters, making it faster than the naive approach for longer patterns.</p>
+            <p>The Boyer-Moore algorithm is a highly efficient pattern matching algorithm that uses mismatched characters to skip sections of the text, thereby reducing comparisons. By utilizing two heuristics—bad character and good suffix—it often performs better than other pattern matching algorithms on large alphabets. This algorithm is commonly applied in search engines and text editing software.</p>
         </div>
 
         <button class="collapsible">Ford-Fulkerson Method</button>
         <div class="collapsible-content">
-            <p>The Ford-Fulkerson method is used to compute the maximum flow in a flow network by continuously finding augmenting paths until no more can be found.</p>
+            <p>The Ford-Fulkerson method is used to find the maximum flow in a flow network. It works by continuously finding paths with available capacity, known as augmenting paths, and increasing flow until no more augmenting paths are found. Although it has exponential time complexity in the worst case, the method forms the basis for various optimized versions. It's widely used in network routing and in solving bipartite matching problems.</p>
         </div>
 
         <button class="collapsible">Edmonds-Karp Algorithm</button>
         <div class="collapsible-content">
-            <p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method that uses BFS to find the shortest augmenting path, ensuring polynomial time complexity.</p>
+            <p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method that uses BFS to find the shortest augmenting path, limiting each augmenting path’s length and ensuring a time complexity of O(V * E^2). By leveraging BFS, Edmonds-Karp is faster than Ford-Fulkerson in practical scenarios and is frequently used in applications requiring reliable maximum flow calculations, such as network traffic management and project planning.</p>
         </div>
 
         <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>

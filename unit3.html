@@ -28,10 +28,10 @@
             margin: 20px auto;
             padding: 20px;
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        h2 {
+        h2, h3 {
             color: #4a4e69;
         }
         p {
@@ -49,45 +49,27 @@
             width: 100%;
             text-align: left;
             outline: none;
+            border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .collapsible:hover {
             background-color: #61678f;
         }
         .collapsible:after {
-            content: '\002B';
+            content: '\25BC';
             font-weight: bold;
             float: right;
         }
         .collapsible.active:after {
-            content: '\2212';
+            content: '\25B2';
         }
         .collapsible-content {
             display: none;
             padding: 15px;
-            border-top: 2px solid #ddd;
-        }
-
-        /* Tooltip Styles */
-        .tooltip {
-            position: relative;
-            cursor: pointer;
-            color: #007acc;
-            text-decoration: underline;
-        }
-        .tooltip:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 5px;
-            font-size: 0.9rem;
-            background-color: #333;
-            color: #fff;
-            border-radius: 4px;
-            white-space: nowrap;
-            z-index: 1;
+            margin-top: 5px;
+            border-radius: 8px;
+            background-color: #f9f9fb;
+            border: 1px solid #ddd;
         }
 
         /* Footer Styles */
@@ -97,6 +79,17 @@
             background-color: #333;
             color: #fff;
             margin-top: 20px;
+        }
+
+        /* Code Styling */
+        pre {
+            background-color: #f4f4f9;
+            padding: 10px;
+            border-radius: 8px;
+            overflow: auto;
+            font-size: 1rem;
+            color: #333;
+            font-family: Consolas, monospace;
         }
     </style>
 </head>
@@ -108,44 +101,86 @@
 
     <div class="content">
         <h2>Overview of Topics</h2>
-        <p>This unit covers key graph algorithms, such as <span class="tooltip" data-tooltip="A shortest-path algorithm for weighted graphs with non-negative weights.">Dijkstra’s Algorithm</span>, <span class="tooltip" data-tooltip="Depth-First Search for exploring nodes in a depth-wise manner.">DFS</span>, and <span class="tooltip" data-tooltip="A shortest-path algorithm for unweighted graphs.">BFS</span>. Understanding these algorithms will enable you to solve real-world network problems.</p>
+        <p>This unit covers key graph algorithms, such as Dijkstra’s Algorithm, DFS, and BFS. Understanding these algorithms will enable you to solve real-world network problems.</p>
 
         <button class="collapsible">BFS (Breadth-First Search)</button>
         <div class="collapsible-content">
-            <p>BFS explores nodes layer by layer from a starting point, ideal for finding the shortest path in unweighted graphs.</p>
+            <p>BFS explores nodes layer by layer, making it ideal for finding the shortest path in unweighted graphs. BFS is commonly used for finding connected components and shortest paths.</p>
+            <h3>Example Code:</h3>
+            <pre><code>from collections import deque
+
+def bfs(graph, start):
+    queue = deque([start])
+    visited = set()
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            visited.add(node)
+            queue.extend(graph[node] - visited)
+</code></pre>
         </div>
 
         <button class="collapsible">DFS (Depth-First Search)</button>
         <div class="collapsible-content">
-            <p>DFS dives deep into each branch before backtracking, making it useful for detecting cycles and finding connected components.</p>
+            <p>DFS explores as far as possible along a branch before backtracking. It is useful for detecting cycles and finding connected components.</p>
+            <h3>Example Code:</h3>
+            <pre><code>def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    for next in graph[start] - visited:
+        dfs(graph, next, visited)
+    return visited
+</code></pre>
         </div>
 
         <button class="collapsible">Dijkstra's Algorithm</button>
         <div class="collapsible-content">
-            <p>Dijkstra's Algorithm finds the shortest path between nodes in a weighted graph with non-negative weights, commonly used in GPS and network routing.</p>
+            <p>Dijkstra's Algorithm finds the shortest path from a starting node to all other nodes in a graph with non-negative weights, commonly used in GPS and network routing.</p>
+            <h3>Example Code:</h3>
+            <pre><code>import heapq
+
+def dijkstra(graph, start):
+    distances = {vertex: float('infinity') for vertex in graph}
+    distances[start] = 0
+    pq = [(0, start)]
+    while pq:
+        current_distance, current_vertex = heapq.heappop(pq)
+        if current_distance > distances[current_vertex]:
+            continue
+        for neighbor, weight in graph[current_vertex].items():
+            distance = current_distance + weight
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+    return distances
+</code></pre>
         </div>
 
-        <button class="collapsible">Bellman-Ford Algorithm</button>
+        <button class="collapsible">Interview Questions & Answers</button>
         <div class="collapsible-content">
-            <p>Bellman-Ford is a shortest-path algorithm that can handle graphs with negative weights, unlike Dijkstra’s Algorithm.</p>
-        </div>
+            <h3><strong>Interview Questions</strong></h3>
+            <p><strong>Q1:</strong> What is the main difference between BFS and DFS?</p>
+            <p><strong>Answer:</strong> BFS explores nodes layer by layer and is optimal for finding the shortest path in unweighted graphs. DFS, however, explores as far as possible down a branch and is useful for detecting cycles and finding connected components.</p>
 
-        <button class="collapsible">Kruskal’s Algorithm</button>
-        <div class="collapsible-content">
-            <p>Kruskal’s Algorithm finds a minimum spanning tree (MST) for a graph, ensuring that all vertices are connected with minimal edge weight.</p>
+            <p><strong>Q2:</strong> When is Dijkstra’s Algorithm unsuitable for shortest-path problems?</p>
+            <p><strong>Answer:</strong> Dijkstra’s Algorithm is unsuitable when the graph has negative weight edges, as it may not produce correct results.</p>
+
+            <p><strong>Q3:</strong> What are practical applications of graph algorithms in the real world?</p>
+            <p><strong>Answer:</strong> Graph algorithms are used in applications like GPS navigation (shortest path), social networks (suggesting connections), web crawling (exploring linked pages), and computer networking (routing).</p>
         </div>
 
         <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
     </div>
 
     <script>
-        // JavaScript for Collapsible Sections
-        const coll = document.querySelectorAll(".collapsible");
-        coll.forEach(button => {
+        // JavaScript for Collapsible Sections with smoother toggle
+        document.querySelectorAll(".collapsible").forEach(button => {
             button.addEventListener("click", function() {
                 this.classList.toggle("active");
                 const content = this.nextElementSibling;
                 content.style.display = content.style.display === "block" ? "none" : "block";
+                content.style.transition = "all 0.3s ease";
             });
         });
     </script>

@@ -9,11 +9,12 @@
         body { font-family: Arial, sans-serif; background: linear-gradient(45deg, #f4f4f9, #e1e5ee); color: #333; }
         header { background-color: #333; color: #fff; padding: 1rem; text-align: center; }
         .content { max-width: 800px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
-        .collapsible { background-color: #4a4e69; color: #fff; cursor: pointer; padding: 10px; border: none; width: 100%; text-align: left; outline: none; }
+        .collapsible { background-color: #4a4e69; color: #fff; cursor: pointer; padding: 10px; border: none; width: 100%; text-align: left; outline: none; position: relative; }
         .collapsible:hover { background-color: #61678f; }
-        .collapsible:after { content: '\002B'; font-weight: bold; float: right; }
-        .collapsible.active:after { content: '\2212'; }
-        .collapsible-content { display: none; padding: 15px; border-top: 2px solid #ddd; }
+        .collapsible:after { content: '\25BC'; font-weight: bold; float: right; transition: transform 0.2s; }
+        .collapsible.active:after { content: '\25B2'; transform: rotate(180deg); }
+        .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .collapsible-content p, .collapsible-content h3 { margin: 0; padding: 15px; }
         .tooltip { position: relative; cursor: pointer; color: #007acc; text-decoration: underline; }
         .tooltip:hover::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; font-size: 0.9rem; background-color: #333; color: #fff; border-radius: 4px; }
         footer { text-align: center; padding: 1rem; background-color: #333; color: #fff; margin-top: 20px; }
@@ -31,17 +32,64 @@
 
         <button class="collapsible">AVL Trees</button>
         <div class="collapsible-content">
-            <p>AVL Trees are height-balanced binary search trees that ensure O(log n) time complexity for insertion, deletion, and search.</p>
+            <p>AVL Trees are height-balanced binary search trees that ensure O(log n) time complexity for insertion, deletion, and search. The balance factor of each node (the difference in height between the left and right subtrees) must be -1, 0, or +1. This property helps maintain the balance of the tree, allowing for efficient operations.</p>
+            <h3>Example:</h3>
+            <pre><code>class Node:<br>
+    &nbsp;&nbsp;def __init__(self, key):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.left = None<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.right = None<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.val = key<br>
+
+class AVLTree:<br>
+    &nbsp;&nbsp;def insert(self, root, key):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;# Insert logic here</code></pre>
         </div>
 
         <button class="collapsible">Red-Black Trees</button>
         <div class="collapsible-content">
-            <p>Red-Black Trees balance themselves through color rules, providing efficient insertion and deletion operations.</p>
+            <p>Red-Black Trees are a type of self-balancing binary search tree that maintains balance through color-coding of nodes (red and black). Each node follows specific rules regarding its color, which helps ensure that the longest path from the root to a leaf is no more than twice as long as the shortest path. This guarantees O(log n) time complexity for search, insert, and delete operations.</p>
+            <h3>Example:</h3>
+            <pre><code>class Node:<br>
+    &nbsp;&nbsp;def __init__(self, data):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.data = data<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.color = 'red'<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;self.left = self.right = None<br>
+
+class RedBlackTree:<br>
+    &nbsp;&nbsp;def insert(self, data):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;# Insertion logic with balancing</code></pre>
         </div>
 
         <button class="collapsible">Binary Heaps</button>
         <div class="collapsible-content">
-            <p>Binary Heaps support fast retrieval of the maximum or minimum element and are often used in priority queues.</p>
+            <p>Binary Heaps are complete binary trees that satisfy the heap property. In a max heap, each parent node is greater than or equal to its children, while in a min heap, each parent node is less than or equal to its children. They are commonly used in implementing priority queues, where the highest (or lowest) priority element can be accessed quickly.</p>
+            <h3>Example:</h3>
+            <pre><code>import heapq<br>
+heap = []<br>
+heapq.heappush(heap, 5)<br>
+heapq.heappush(heap, 2)<br>
+min_element = heapq.heappop(heap)  # Retrieves the minimum element</code></pre>
+        </div>
+
+        <button class="collapsible">Interview Questions</button>
+        <div class="collapsible-content">
+            <h3>AVL Trees</h3>
+            <p><strong>Q1:</strong> <strong>What is an AVL tree?</strong></p>
+            <p><strong>A:</strong> An AVL tree is a self-balancing binary search tree where the difference between heights of left and right subtrees cannot be more than one for all nodes.</p>
+            <p><strong>Q2:</strong> <strong>How do you maintain balance in an AVL tree?</strong></p>
+            <p><strong>A:</strong> By performing rotations (left, right, left-right, right-left) when the tree becomes unbalanced after insertion or deletion.</p>
+
+            <h3>Red-Black Trees</h3>
+            <p><strong>Q1:</strong> <strong>What is a Red-Black tree?</strong></p>
+            <p><strong>A:</strong> A Red-Black tree is a balanced binary search tree with an additional property: each node is colored red or black to ensure that the longest path from the root to a leaf is no more than twice as long as the shortest path.</p>
+            <p><strong>Q2:</strong> <strong>What are the properties of a Red-Black tree?</strong></p>
+            <p><strong>A:</strong> The properties include: each node is either red or black; the root is black; red nodes cannot have red children; every path from a node to its descendant leaves must have the same number of black nodes.</p>
+
+            <h3>Binary Heaps</h3>
+            <p><strong>Q1:</strong> <strong>What is a Binary Heap?</strong></p>
+            <p><strong>A:</strong> A Binary Heap is a complete binary tree that satisfies the heap property; for a max heap, each parent node is greater than or equal to its children, while for a min heap, each parent node is less than or equal to its children.</p>
+            <p><strong>Q2:</strong> <strong>What are the applications of Binary Heaps?</strong></p>
+            <p><strong>A:</strong> They are commonly used in implementing priority queues, heapsort algorithms, and finding the shortest path in graph algorithms like Dijkstra's algorithm.</p>
         </div>
 
         <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
@@ -52,7 +100,12 @@
             button.addEventListener("click", function() {
                 this.classList.toggle("active");
                 const content = this.nextElementSibling;
-                content.style.display = content.style.display === "block" ? "none" : "block";
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px"; // Set max-height to the scrollHeight
+                }
             });
         });
     </script>
