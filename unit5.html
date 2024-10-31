@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5: Specialized Algorithms</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #4a4e69;
+        }
+        p {
+            line-height: 1.6;
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible {
+            background-color: #4a4e69;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #61678f;
+        }
+        .collapsible:after {
+            content: '\002B';
+            font-weight: bold;
+            float: right;
+        }
+        .collapsible.active:after {
+            content: '\2212';
+        }
+        .collapsible-content {
+            display: none;
+            padding: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #007acc;
+            text-decoration: underline;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            font-size: 0.9rem;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unit 5: Specialized Algorithms</h1>
+    </header>
+
+    <div class="content">
+        <h2>Overview of Topics</h2>
+        <p>This unit covers specialized algorithms such as <span class="tooltip" data-tooltip="Used for finding patterns in a text string.">Pattern Matching</span> and <span class="tooltip" data-tooltip="A method to compute the maximum flow in a flow network.">Network Flow Algorithms</span>.</p>
+
+        <button class="collapsible">Naive Pattern Matching</button>
+        <div class="collapsible-content">
+            <p>The Naive Pattern Matching algorithm checks for the presence of a substring in a string by trying every possible position. It's simple but can be inefficient for larger texts.</p>
+        </div>
+
+        <button class="collapsible">KMP (Knuth-Morris-Pratt) Algorithm</button>
+        <div class="collapsible-content">
+            <p>The KMP algorithm improves pattern matching efficiency by using precomputed information about the pattern to skip unnecessary comparisons.</p>
+        </div>
+
+        <button class="collapsible">Boyer-Moore Algorithm</button>
+        <div class="collapsible-content">
+            <p>The Boyer-Moore algorithm skips sections of the text being searched based on the mismatched characters, making it faster than the naive approach for longer patterns.</p>
+        </div>
+
+        <button class="collapsible">Ford-Fulkerson Method</button>
+        <div class="collapsible-content">
+            <p>The Ford-Fulkerson method is used to compute the maximum flow in a flow network by continuously finding augmenting paths until no more can be found.</p>
+        </div>
+
+        <button class="collapsible">Edmonds-Karp Algorithm</button>
+        <div class="collapsible-content">
+            <p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method that uses BFS to find the shortest augmenting path, ensuring polynomial time complexity.</p>
+        </div>
+
+        <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
+    </div>
+
+    <script>
+        // JavaScript for Collapsible Sections
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+</body>
+</html>

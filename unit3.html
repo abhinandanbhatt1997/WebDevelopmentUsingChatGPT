@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3: Graph Algorithms</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #4a4e69;
+        }
+        p {
+            line-height: 1.6;
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible {
+            background-color: #4a4e69;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #61678f;
+        }
+        .collapsible:after {
+            content: '\002B';
+            font-weight: bold;
+            float: right;
+        }
+        .collapsible.active:after {
+            content: '\2212';
+        }
+        .collapsible-content {
+            display: none;
+            padding: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #007acc;
+            text-decoration: underline;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            font-size: 0.9rem;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unit 3: Graph Algorithms</h1>
+    </header>
+
+    <div class="content">
+        <h2>Overview of Topics</h2>
+        <p>This unit covers key graph algorithms, such as <span class="tooltip" data-tooltip="A shortest-path algorithm for weighted graphs with non-negative weights.">Dijkstra’s Algorithm</span>, <span class="tooltip" data-tooltip="Depth-First Search for exploring nodes in a depth-wise manner.">DFS</span>, and <span class="tooltip" data-tooltip="A shortest-path algorithm for unweighted graphs.">BFS</span>. Understanding these algorithms will enable you to solve real-world network problems.</p>
+
+        <button class="collapsible">BFS (Breadth-First Search)</button>
+        <div class="collapsible-content">
+            <p>BFS explores nodes layer by layer from a starting point, ideal for finding the shortest path in unweighted graphs.</p>
+        </div>
+
+        <button class="collapsible">DFS (Depth-First Search)</button>
+        <div class="collapsible-content">
+            <p>DFS dives deep into each branch before backtracking, making it useful for detecting cycles and finding connected components.</p>
+        </div>
+
+        <button class="collapsible">Dijkstra's Algorithm</button>
+        <div class="collapsible-content">
+            <p>Dijkstra's Algorithm finds the shortest path between nodes in a weighted graph with non-negative weights, commonly used in GPS and network routing.</p>
+        </div>
+
+        <button class="collapsible">Bellman-Ford Algorithm</button>
+        <div class="collapsible-content">
+            <p>Bellman-Ford is a shortest-path algorithm that can handle graphs with negative weights, unlike Dijkstra’s Algorithm.</p>
+        </div>
+
+        <button class="collapsible">Kruskal’s Algorithm</button>
+        <div class="collapsible-content">
+            <p>Kruskal’s Algorithm finds a minimum spanning tree (MST) for a graph, ensuring that all vertices are connected with minimal edge weight.</p>
+        </div>
+
+        <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
+    </div>
+
+    <script>
+        // JavaScript for Collapsible Sections
+        const coll = document.querySelectorAll(".collapsible");
+        coll.forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+</body>
+</html>

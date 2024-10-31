@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Algorithm Design Techniques</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #4a4e69;
+        }
+        p {
+            line-height: 1.6;
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible {
+            background-color: #4a4e69;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #61678f;
+        }
+        .collapsible:after {
+            content: '\002B';
+            font-weight: bold;
+            float: right;
+        }
+        .collapsible.active:after {
+            content: '\2212';
+        }
+        .collapsible-content {
+            display: none;
+            padding: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #007acc;
+            text-decoration: underline;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            font-size: 0.9rem;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unit 4: Algorithm Design Techniques</h1>
+    </header>
+
+    <div class="content">
+        <h2>Overview of Topics</h2>
+        <p>In this unit, we explore essential techniques such as <span class="tooltip" data-tooltip="Divides a problem into overlapping subproblems.">Dynamic Programming</span>, <span class="tooltip" data-tooltip="Uses locally optimal choices to solve complex problems.">Greedy Algorithms</span>, and critical sorting algorithms.</p>
+
+        <button class="collapsible">Dynamic Programming</button>
+        <div class="collapsible-content">
+            <p>Dynamic Programming (DP) is a technique for solving complex problems by breaking them down into simpler subproblems. It is often used for problems with overlapping subproblems and optimal substructure, such as the Knapsack problem and the Longest Common Subsequence.</p>
+        </div>
+
+        <button class="collapsible">Greedy Algorithms</button>
+        <div class="collapsible-content">
+            <p>Greedy Algorithms make a sequence of choices, each of which looks the best at the moment, to find an overall optimal solution. Examples include the Activity Selection Problem and Huffman Coding.</p>
+        </div>
+
+        <button class="collapsible">Sorting Algorithms</button>
+        <div class="collapsible-content">
+            <p>Sorting algorithms like Merge Sort and Quick Sort are essential for data organization and preprocessing in computer science, offering efficient ways to handle data for further processing.</p>
+        </div>
+
+        <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
+    </div>
+
+    <script>
+        // JavaScript for Collapsible Sections
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+</body>
+</html>

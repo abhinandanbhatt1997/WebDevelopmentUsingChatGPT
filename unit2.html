@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2: Advanced Data Structures</title>
+    <style>
+        /* General Styles */
+        body { font-family: Arial, sans-serif; background: linear-gradient(45deg, #f4f4f9, #e1e5ee); color: #333; }
+        header { background-color: #333; color: #fff; padding: 1rem; text-align: center; }
+        .content { max-width: 800px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+        .collapsible { background-color: #4a4e69; color: #fff; cursor: pointer; padding: 10px; border: none; width: 100%; text-align: left; outline: none; }
+        .collapsible:hover { background-color: #61678f; }
+        .collapsible:after { content: '\002B'; font-weight: bold; float: right; }
+        .collapsible.active:after { content: '\2212'; }
+        .collapsible-content { display: none; padding: 15px; border-top: 2px solid #ddd; }
+        .tooltip { position: relative; cursor: pointer; color: #007acc; text-decoration: underline; }
+        .tooltip:hover::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding: 5px; font-size: 0.9rem; background-color: #333; color: #fff; border-radius: 4px; }
+        footer { text-align: center; padding: 1rem; background-color: #333; color: #fff; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unit 2: Advanced Data Structures</h1>
+    </header>
+
+    <div class="content">
+        <h2>Overview of Topics</h2>
+        <p>This unit dives into advanced data structures like <span class="tooltip" data-tooltip="A self-balancing binary search tree.">AVL Trees</span>, <span class="tooltip" data-tooltip="A binary heap optimized for fast insertion and extraction of minimum elements.">Binary Heaps</span>, and more.</p>
+
+        <button class="collapsible">AVL Trees</button>
+        <div class="collapsible-content">
+            <p>AVL Trees are height-balanced binary search trees that ensure O(log n) time complexity for insertion, deletion, and search.</p>
+        </div>
+
+        <button class="collapsible">Red-Black Trees</button>
+        <div class="collapsible-content">
+            <p>Red-Black Trees balance themselves through color rules, providing efficient insertion and deletion operations.</p>
+        </div>
+
+        <button class="collapsible">Binary Heaps</button>
+        <div class="collapsible-content">
+            <p>Binary Heaps support fast retrieval of the maximum or minimum element and are often used in priority queues.</p>
+        </div>
+
+        <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
+    </div>
+
+    <script>
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+
+</body>
+</html>

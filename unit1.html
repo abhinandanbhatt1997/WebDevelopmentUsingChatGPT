@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1: Introduction and Basics</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3 {
+            color: #4a4e69;
+        }
+        p {
+            line-height: 1.6;
+        }
+
+        /* Collapsible Section Styles */
+        .collapsible {
+            background-color: #4a4e69;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #61678f;
+        }
+        .collapsible:after {
+            content: '\002B';
+            font-weight: bold;
+            float: right;
+        }
+        .collapsible.active:after {
+            content: '\2212';
+        }
+        .collapsible-content {
+            display: none;
+            padding: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #007acc;
+            text-decoration: underline;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            font-size: 0.9rem;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unit 1: Introduction and Basics</h1>
+    </header>
+
+    <div class="content">
+        <h2>Overview of Topics</h2>
+        <p>This unit introduces essential data structures like <span class="tooltip" data-tooltip="Sequential data structures where elements are identified by index.">arrays</span>, <span class="tooltip" data-tooltip="Linked structures where each element points to the next.">linked lists</span>, <span class="tooltip" data-tooltip="LIFO (Last In, First Out) data structure.">stacks</span>, and <span class="tooltip" data-tooltip="FIFO (First In, First Out) data structure.">queues</span>. You’ll also learn about evaluating time and space complexity for algorithms.</p>
+
+        <button class="collapsible">Arrays</button>
+        <div class="collapsible-content">
+            <p>Arrays are a basic data structure where elements are stored in contiguous memory. They allow efficient access by index but are fixed in size.</p>
+        </div>
+
+        <button class="collapsible">Linked Lists</button>
+        <div class="collapsible-content">
+            <p>Linked Lists are a collection of nodes where each node points to the next, making them dynamic in size and useful for certain types of insertion and deletion operations.</p>
+        </div>
+
+        <button class="collapsible">Stacks</button>
+        <div class="collapsible-content">
+            <p>Stacks follow a Last In, First Out (LIFO) structure. They are used in recursive algorithms and undo functionalities.</p>
+        </div>
+
+        <button class="collapsible">Queues</button>
+        <div class="collapsible-content">
+            <p>Queues follow a First In, First Out (FIFO) structure and are commonly used in scheduling tasks and managing data buffers.</p>
+        </div>
+
+        <button class="collapsible">Time Complexity</button>
+        <div class="collapsible-content">
+            <p>Time Complexity is the measure of the time an algorithm takes to complete as a function of the input size. It is often expressed using Big O notation, like O(n), O(log n).</p>
+        </div>
+
+        <button class="collapsible">Space Complexity</button>
+        <div class="collapsible-content">
+            <p>Space Complexity measures the amount of memory an algorithm requires relative to the input size.</p>
+        </div>
+
+        <footer>
+            &copy; 2024 Advanced Data Structures and Algorithms Course
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript for Collapsible Sections
+        const coll = document.querySelectorAll(".collapsible");
+        coll.forEach(button => {
+            button.addEventListener("click", function() {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
