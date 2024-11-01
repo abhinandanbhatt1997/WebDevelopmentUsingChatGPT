@@ -23,6 +23,22 @@
             margin: 0;
             font-size: 2rem;
         }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: #4a4e69;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #61678f;
+        }
         .content {
             max-width: 800px;
             margin: 20px auto;
@@ -98,6 +114,9 @@
 
     <header>
         <h1>Unit 4: Algorithm Design Techniques</h1>
+        <nav>
+            <a href="index.html">Home</a> <!-- Home button link -->
+        </nav>
     </header>
 
     <div class="content">
@@ -107,6 +126,7 @@
         <button class="collapsible">Dynamic Programming</button>
         <div class="collapsible-content">
             <p>Dynamic Programming (DP) is a technique for solving complex problems by breaking them down into simpler subproblems. It is often used for problems with overlapping subproblems and optimal substructure, such as the Knapsack problem and the Longest Common Subsequence.</p>
+            <img src="dynamic-programming.jpeg" alt="Dynamic Programming Image" style="width:100%; height:auto; margin-top:10px;">
             <h3>Example Code:</h3>
             <pre><code>def fibonacci(n):
     dp = [0, 1] + [0] * (n - 1)
@@ -119,6 +139,7 @@
         <button class="collapsible">Greedy Algorithms</button>
         <div class="collapsible-content">
             <p>Greedy Algorithms make a sequence of choices, each of which looks the best at the moment, to find an overall optimal solution. Examples include the Activity Selection Problem and Huffman Coding.</p>
+            <img src="greedy.jpeg" alt="Greedy Algorithms Image" style="width:100%; height:auto; margin-top:10px;">
             <h3>Example Code:</h3>
             <pre><code>def activity_selection(activities):
     activities.sort(key=lambda x: x[1])
@@ -133,6 +154,7 @@
         <button class="collapsible">Sorting Algorithms</button>
         <div class="collapsible-content">
             <p>Sorting algorithms like Merge Sort and Quick Sort are essential for data organization and preprocessing in computer science, offering efficient ways to handle data for further processing.</p>
+            <img src="insertion.gif" alt="Sorting Algorithms Image" style="width:100%; height:auto; margin-top:10px;"> <!-- Fixed filename here -->
             <h3>Example Code:</h3>
             <pre><code>def quick_sort(arr):
     if len(arr) <= 1:
