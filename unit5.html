@@ -23,6 +23,22 @@
             margin: 0;
             font-size: 2rem;
         }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: #4a4e69;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #61678f;
+        }
         .content {
             max-width: 800px;
             margin: 20px auto;
@@ -109,6 +125,9 @@
 
     <header>
         <h1>Unit 5: Specialized Algorithms</h1>
+        <nav>
+            <a href="index.html">Home</a> <!-- Home button link -->
+        </nav>
     </header>
 
     <div class="content">
@@ -117,26 +136,31 @@
 
         <button class="collapsible">Naive Pattern Matching</button>
         <div class="collapsible-content">
+            <img src="naive.jpg" alt="Naive Pattern Matching" style="width:100%; height:auto; margin-top:10px;">
             <p>The Naive Pattern Matching algorithm checks each possible position in a text string for a match with a given pattern. Although simple to understand and implement, it can be inefficient for long texts, as it requires O(m*n) time for matching a pattern of length *m* in a text of length *n*. This algorithm is mainly used for small text searches or educational purposes.</p>
         </div>
 
         <button class="collapsible">KMP (Knuth-Morris-Pratt) Algorithm</button>
         <div class="collapsible-content">
+            <img src="KMP.jpg" alt="KMP Algorithm" style="width:100%; height:auto; margin-top:10px;">
             <p>The KMP algorithm efficiently searches for a pattern in a text by preprocessing the pattern to create a partial match table, which allows it to skip unnecessary comparisons. By avoiding redundant re-checks of characters, KMP reduces the time complexity to O(m + n). This algorithm is particularly useful in applications where repeated pattern matching is necessary, like DNA sequence matching or text editors.</p>
         </div>
 
         <button class="collapsible">Boyer-Moore Algorithm</button>
         <div class="collapsible-content">
+            <img src="BM.jpg" alt="Boyer-Moore Algorithm" style="width:100%; height:auto; margin-top:10px;">
             <p>The Boyer-Moore algorithm is a highly efficient pattern matching algorithm that uses mismatched characters to skip sections of the text, thereby reducing comparisons. By utilizing two heuristics—bad character and good suffix—it often performs better than other pattern matching algorithms on large alphabets. This algorithm is commonly applied in search engines and text editing software.</p>
         </div>
 
         <button class="collapsible">Ford-Fulkerson Method</button>
         <div class="collapsible-content">
+            <img src="FF.jpeg" alt="Ford-Fulkerson Method" style="width:100%; height:auto; margin-top:10px;">
             <p>The Ford-Fulkerson method is used to find the maximum flow in a flow network. It works by continuously finding paths with available capacity, known as augmenting paths, and increasing flow until no more augmenting paths are found. Although it has exponential time complexity in the worst case, the method forms the basis for various optimized versions. It's widely used in network routing and in solving bipartite matching problems.</p>
         </div>
 
         <button class="collapsible">Edmonds-Karp Algorithm</button>
         <div class="collapsible-content">
+            <img src="EK.jpg" alt="Edmonds-Karp Algorithm" style="width:100%; height:auto; margin-top:10px;">
             <p>The Edmonds-Karp algorithm is an implementation of the Ford-Fulkerson method that uses BFS to find the shortest augmenting path, limiting each augmenting path’s length and ensuring a time complexity of O(V * E^2). By leveraging BFS, Edmonds-Karp is faster than Ford-Fulkerson in practical scenarios and is frequently used in applications requiring reliable maximum flow calculations, such as network traffic management and project planning.</p>
         </div>
 
