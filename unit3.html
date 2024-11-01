@@ -8,8 +8,7 @@
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
-            color: #333;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
         }
@@ -38,22 +37,40 @@
             line-height: 1.6;
         }
 
+        /* Home Button Styles */
+        .home-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+
+        .home-button:hover {
+            background-color: #45a049;
+        }
+
         /* Collapsible Section Styles */
         .collapsible {
-            background-color: #4a4e69;
-            color: #fff;
+            background-color: #2ed573;
+            color: white;
             cursor: pointer;
-            padding: 10px;
+            padding: 15px;
             font-size: 1.2rem;
             border: none;
             width: 100%;
             text-align: left;
             outline: none;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
         }
         .collapsible:hover {
-            background-color: #61678f;
+            background-color: #28b356;
         }
         .collapsible:after {
             content: '\25BC';
@@ -67,8 +84,8 @@
             display: none;
             padding: 15px;
             margin-top: 5px;
-            border-radius: 8px;
-            background-color: #f9f9fb;
+            border-radius: 5px;
+            background-color: #f1f1f1;
             border: 1px solid #ddd;
         }
 
@@ -91,6 +108,13 @@
             color: #333;
             font-family: Consolas, monospace;
         }
+
+        /* Image Styling */
+        .algorithm-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -99,13 +123,16 @@
         <h1>Unit 3: Graph Algorithms</h1>
     </header>
 
+    <a href="index.html" class="home-button">Home</a>
+
     <div class="content">
         <h2>Overview of Topics</h2>
-        <p>This unit covers key graph algorithms, such as Dijkstra’s Algorithm, DFS, and BFS. Understanding these algorithms will enable you to solve real-world network problems.</p>
+        <p>This unit covers key graph algorithms, such as Dijkstra’s Algorithm, Depth-First Search (DFS), and Breadth-First Search (BFS). Understanding these algorithms will enable you to solve real-world network problems.</p>
 
         <button class="collapsible">BFS (Breadth-First Search)</button>
         <div class="collapsible-content">
-            <p>BFS explores nodes layer by layer, making it ideal for finding the shortest path in unweighted graphs. BFS is commonly used for finding connected components and shortest paths.</p>
+            <p>BFS explores nodes layer by layer, making it ideal for finding the shortest path in unweighted graphs. The algorithm uses a queue data structure to keep track of the nodes to explore, ensuring that it visits all neighbors of a node before moving on to the next level of nodes.</p>
+            <img src="bfs.jpeg" alt="BFS Illustration" class="algorithm-image">
             <h3>Example Code:</h3>
             <pre><code>from collections import deque
 
@@ -122,7 +149,8 @@ def bfs(graph, start):
 
         <button class="collapsible">DFS (Depth-First Search)</button>
         <div class="collapsible-content">
-            <p>DFS explores as far as possible along a branch before backtracking. It is useful for detecting cycles and finding connected components.</p>
+            <p>DFS explores as far as possible along each branch before backtracking. It can be implemented using recursion or a stack data structure. This algorithm is beneficial for exploring all nodes and paths in a graph, making it useful for tasks such as topological sorting, cycle detection, and solving puzzles like mazes.</p>
+            <img src="dfs.jpeg" alt="DFS Illustration" class="algorithm-image">
             <h3>Example Code:</h3>
             <pre><code>def dfs(graph, start, visited=None):
     if visited is None:
@@ -136,7 +164,8 @@ def bfs(graph, start):
 
         <button class="collapsible">Dijkstra's Algorithm</button>
         <div class="collapsible-content">
-            <p>Dijkstra's Algorithm finds the shortest path from a starting node to all other nodes in a graph with non-negative weights, commonly used in GPS and network routing.</p>
+            <p>Dijkstra's Algorithm finds the shortest path from a starting node to all other nodes in a graph with non-negative weights. It uses a priority queue (min-heap) to always extend the shortest known path. This algorithm is widely used in various applications such as GPS navigation and network routing.</p>
+            <img src="dijsktras_algorithm_cpp.jpeg" alt="Dijkstra's Algorithm Illustration" class="algorithm-image">
             <h3>Example Code:</h3>
             <pre><code>import heapq
 
@@ -163,27 +192,23 @@ def dijkstra(graph, start):
             <p><strong>Q1:</strong> What is the main difference between BFS and DFS?</p>
             <p><strong>Answer:</strong> BFS explores nodes layer by layer and is optimal for finding the shortest path in unweighted graphs. DFS, however, explores as far as possible down a branch and is useful for detecting cycles and finding connected components.</p>
 
-            <p><strong>Q2:</strong> When is Dijkstra’s Algorithm unsuitable for shortest-path problems?</p>
-            <p><strong>Answer:</strong> Dijkstra’s Algorithm is unsuitable when the graph has negative weight edges, as it may not produce correct results.</p>
-
-            <p><strong>Q3:</strong> What are practical applications of graph algorithms in the real world?</p>
-            <p><strong>Answer:</strong> Graph algorithms are used in applications like GPS navigation (shortest path), social networks (suggesting connections), web crawling (exploring linked pages), and computer networking (routing).</p>
+            <p><strong>Q2:</strong> When is Dijkstra’s algorithm not applicable?</p>
+            <p><strong>Answer:</strong> Dijkstra's algorithm is not applicable for graphs with negative weight edges, as it may lead to incorrect shortest path calculations.</p>
         </div>
-
-        <footer>&copy; 2024 Advanced Data Structures and Algorithms Course</footer>
     </div>
 
+    <footer>
+        &copy; 2024 Your Name. All Rights Reserved.
+    </footer>
+
     <script>
-        // JavaScript for Collapsible Sections with smoother toggle
-        document.querySelectorAll(".collapsible").forEach(button => {
-            button.addEventListener("click", function() {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
                 content.style.display = content.style.display === "block" ? "none" : "block";
-                content.style.transition = "all 0.3s ease";
             });
         });
     </script>
-
 </body>
 </html>

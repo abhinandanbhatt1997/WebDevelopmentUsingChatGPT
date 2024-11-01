@@ -3,266 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1: Introduction and Basics</title>
+    <title>Data Structures and Algorithms Course</title>
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(45deg, #f4f4f9, #e1e5ee);
-            color: #333;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        .content {
-            max-width: 800px;
-            margin: 20px auto;
             padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        h2, h3 {
-            color: #4a4e69;
-        }
-        p {
-            line-height: 1.6;
         }
 
-        /* Collapsible Section Styles */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .home-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* No underline */
+            border-radius: 5px; /* Rounded corners */
+            width: fit-content; /* Adjust width */
+        }
+
+        .home-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
         .collapsible {
-            background-color: #4a4e69;
-            color: #fff;
+            background-color: #2ed573;
+            color: white;
             cursor: pointer;
-            padding: 10px;
-            font-size: 1.2rem;
-            border: none;
+            padding: 15px;
             width: 100%;
+            border: none;
             text-align: left;
             outline: none;
-            transition: background-color 0.3s ease;
+            font-size: 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
+
         .collapsible:hover {
-            background-color: #61678f;
+            background-color: #28b356;
         }
-        .collapsible:after {
-            content: '\002B';
-            font-weight: bold;
-            float: right;
-        }
-        .collapsible.active:after {
-            content: '\2212';
-        }
+
         .collapsible-content {
+            padding: 0 15px;
             display: none;
-            padding: 15px;
-            border-top: 2px solid #ddd;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
-        /* Tooltip Styles */
-        .tooltip {
-            position: relative;
-            cursor: pointer;
-            color: #007acc;
-            text-decoration: underline;
-        }
-        .tooltip:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 5px;
-            font-size: 0.9rem;
-            background-color: #333;
-            color: #fff;
-            border-radius: 4px;
-            white-space: nowrap;
-            z-index: 1;
+        .collapsible-content img {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+            display: block;
         }
 
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: #fff;
+        .interview-section {
             margin-top: 20px;
+        }
+
+        .interview-section button {
+            background-color: #ff6348;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .answer {
+            display: none;
+            margin-left: 15px;
         }
     </style>
 </head>
 <body>
+    <a href="index.html" class="home-button">Home</a> <!-- Home Button -->
 
-    <header>
-        <h1>Unit 1: Introduction and Basics</h1>
-    </header>
+    <h1>Data Structures and Algorithms</h1>
 
-    <div class="content">
-        <h2>Overview of Topics</h2>
-        <p>This unit introduces essential data structures like <span class="tooltip" data-tooltip="Sequential data structures where elements are identified by index.">arrays</span>, <span class="tooltip" data-tooltip="Linked structures where each element points to the next.">linked lists</span>, <span class="tooltip" data-tooltip="LIFO (Last In, First Out) data structure.">stacks</span>, and <span class="tooltip" data-tooltip="FIFO (First In, First Out) data structure.">queues</span>. You’ll also learn about evaluating time and space complexity for algorithms.</p>
+    <!-- Arrays Section -->
+    <button class="collapsible">Arrays</button>
+    <div class="collapsible-content">
+        <p>Arrays are a basic data structure where elements are stored in contiguous memory locations. They are highly efficient for accessing elements by their index, which allows constant time access <code>O(1)</code>. However, their size is fixed after declaration, which limits flexibility.</p>
+        <img src="array.jpeg" alt="Array Illustration">
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Indexed access allows quick retrieval of elements.</li>
+            <li>Simple data structure for storing homogeneous elements.</li>
+        </ul>
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>Fixed size makes resizing difficult.</li>
+            <li>Insertion and deletion can be costly due to shifting elements.</li>
+        </ul>
+    </div>
 
-        <button class="collapsible">Arrays</button>
-        <div class="collapsible-content">
-            <p>Arrays are a basic data structure where elements are stored in contiguous memory. They allow efficient access by index but are fixed in size.</p>
-            <h3>Key Characteristics:</h3>
-            <ul>
-                <li>Fixed Size: Once declared, the size cannot change.</li>
-                <li>Indexed Access: Elements can be accessed in constant time O(1).</li>
-                <li>Homogeneous: All elements must be of the same data type.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>In Python: <code>arr = [1, 2, 3, 4, 5]</code></p>
-        </div>
+    <!-- Linked Lists Section -->
+    <button class="collapsible">Linked Lists</button>
+    <div class="collapsible-content">
+        <p>Linked Lists consist of nodes, where each node contains data and a reference (or link) to the next node in the sequence. Unlike arrays, linked lists do not store elements in contiguous memory, allowing them to be dynamically resized.</p>
+        <img src="linkedlist.jpg" alt="Linked List Illustration">
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Dynamic size makes it flexible for insertion and deletion.</li>
+            <li>Efficient for sequential access to data elements.</li>
+        </ul>
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>Higher memory usage due to storage of pointers in each node.</li>
+            <li>Accessing elements is slower than in arrays, as it requires traversing nodes sequentially.</li>
+        </ul>
+    </div>
 
-        <button class="collapsible">Linked Lists</button>
-        <div class="collapsible-content">
-            <p>Linked Lists are a collection of nodes where each node points to the next, making them dynamic in size and useful for certain types of insertion and deletion operations.</p>
-            <h3>Key Characteristics:</h3>
-            <ul>
-                <li>Dynamic Size: Can grow and shrink as needed.</li>
-                <li>Non-contiguous Memory: Nodes can be stored anywhere in memory.</li>
-                <li>Nodes: Each node contains data and a pointer to the next node.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>In Python:</p>
-            <code>
-            class Node:<br>
-            &nbsp;&nbsp;def __init__(self, data):<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;self.data = data<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;self.next = None
-            </code>
-        </div>
+    <!-- Stacks Section -->
+    <button class="collapsible">Stacks</button>
+    <div class="collapsible-content">
+        <p>Stacks follow a Last In, First Out (LIFO) principle, meaning the last element added is the first to be removed. They are commonly used in programming for tasks like function call management, undo operations, and parsing expressions.</p>
+        <img src="stack.jpeg" alt="Stack Illustration">
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Simple and intuitive for managing data that follows LIFO order.</li>
+            <li>Helps with reversing data sequences and backtracking algorithms.</li>
+        </ul>
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>Limited access—only the top element can be accessed.</li>
+            <li>Can lead to stack overflow if too many elements are added without enough memory.</li>
+        </ul>
+    </div>
 
-        <button class="collapsible">Stacks</button>
-        <div class="collapsible-content">
-            <p>Stacks follow a Last In, First Out (LIFO) structure. They are used in recursive algorithms and undo functionalities.</p>
-            <h3>Key Characteristics:</h3>
-            <ul>
-                <li>LIFO Order: The last element added is the first one removed.</li>
-                <li>Push and Pop: Operations to add and remove elements.</li>
-                <li>Stack Overflow: Occurs when trying to add an element to a full stack.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>In Python:</p>
-            <code>
-            stack = []<br>
-            stack.append(1)  # Push<br>
-            stack.pop()      # Pop
-            </code>
-        </div>
+    <!-- Queues Section -->
+    <button class="collapsible">Queues</button>
+    <div class="collapsible-content">
+        <p>Queues follow a First In, First Out (FIFO) principle, meaning the first element added is the first to be removed. They are widely used in scenarios where data must be processed in order, such as job scheduling, message processing, and printer task management.</p>
+        <img src="queue.jpeg" alt="Queue Illustration">
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Efficient for managing tasks in a sequential manner.</li>
+            <li>Widely applicable in scenarios requiring orderly data processing.</li>
+        </ul>
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>Limited access—only the front and rear elements are accessible.</li>
+            <li>Can lead to memory inefficiencies if not implemented correctly.</li>
+        </ul>
+    </div>
 
-        <button class="collapsible">Queues</button>
-        <div class="collapsible-content">
-            <p>Queues follow a First In, First Out (FIFO) structure and are commonly used in scheduling tasks and managing data buffers.</p>
-            <h3>Key Characteristics:</h3>
-            <ul>
-                <li>FIFO Order: The first element added is the first one removed.</li>
-                <li>Enqueue and Dequeue: Operations to add and remove elements.</li>
-                <li>Circular Queue: A circular structure that improves space efficiency.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>In Python:</p>
-            <code>
-            from collections import deque<br>
-            queue = deque()<br>
-            queue.append(1)  # Enqueue<br>
-            queue.popleft()   # Dequeue
-            </code>
-        </div>
+    <!-- Time Complexity Section -->
+    <button class="collapsible">Time Complexity</button>
+    <div class="collapsible-content">
+        <p>Time Complexity is a measure of the computational time taken by an algorithm relative to its input size. It helps evaluate how an algorithm scales as the input grows, usually expressed with Big O notation (e.g., <code>O(1)</code>, <code>O(n)</code>, <code>O(n^2)</code>).</p>
+        <img src="timecomplexity.jpeg" alt="Time Complexity Illustration">
+        <h3>Examples:</h3>
+        <ul>
+            <li><code>O(1)</code>: Constant time, e.g., accessing an array element by index.</li>
+            <li><code>O(n)</code>: Linear time, e.g., finding an element in an unsorted list.</li>
+            <li><code>O(n^2)</code>: Quadratic time, e.g., bubble sort for sorting an array.</li>
+        </ul>
+        <h3>Importance:</h3>
+        <p>Time Complexity is crucial for determining the efficiency of algorithms, especially for large datasets, where high-complexity algorithms can significantly impact performance.</p>
+    </div>
 
-        <button class="collapsible">Time Complexity</button>
-        <div class="collapsible-content">
-            <p>Time Complexity is the measure of the time an algorithm takes to complete as a function of the input size. It is often expressed using Big O notation, like O(n), O(log n).</p>
-            <h3>Common Complexities:</h3>
-            <ul>
-                <li>O(1): Constant time</li>
-                <li>O(log n): Logarithmic time</li>
-                <li>O(n): Linear time</li>
-                <li>O(n log n): Linearithmic time</li>
-                <li>O(n^2): Quadratic time</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>A linear search has a time complexity of O(n).</p>
-        </div>
+    <!-- Space Complexity Section -->
+    <button class="collapsible">Space Complexity</button>
+    <div class="collapsible-content">
+        <p>Space Complexity measures the total memory required by an algorithm relative to its input size. It includes both the space needed for input data storage and any auxiliary data structures used during processing.</p>
+        <img src="spacecomplexity.jpeg" alt="Space Complexity Illustration">
+        <h3>Examples:</h3>
+        <ul>
+            <li><code>O(1)</code>: Constant space, e.g., swapping two variables.</li>
+            <li><code>O(n)</code>: Linear space, e.g., storing an array of <code>n</code> elements.</li>
+            <li><code>O(n^2)</code>: Quadratic space, e.g., creating an <code>n x n</code> matrix.</li>
+        </ul>
+        <h3>Importance:</h3>
+        <p>Optimizing Space Complexity is important for algorithms on memory-constrained systems, where managing auxiliary space efficiently is key.</p>
+    </div>
 
-        <button class="collapsible">Space Complexity</button>
-        <div class="collapsible-content">
-            <p>Space Complexity measures the amount of memory an algorithm requires relative to the input size.</p>
-            <h3>Key Factors:</h3>
-            <ul>
-                <li>Input Space: Memory required to store input data.</li>
-                <li>Auxiliary Space: Extra space used by the algorithm, excluding input space.</li>
-                <li>Recursive Calls: Stack space used during recursion.</li>
-            </ul>
-            <h3>Example:</h3>
-            <p>A recursive function with O(n) space complexity due to the call stack.</p>
-        </div>
-
-        <h2>Interview Questions</h2>
+    <!-- Interview Questions Section -->
+    <div class="interview-section">
         <button class="collapsible">Interview Questions</button>
         <div class="collapsible-content">
-            <h3>Arrays</h3>
-            <ul>
-                <li><strong>What are the differences between arrays and linked lists?</strong>
-                    <br>**Answer:** Arrays are fixed in size and allow random access to elements, while linked lists are dynamic and consist of nodes that point to the next element, allowing efficient insertion and deletion.
-                </li>
-                <li><strong>How would you find the largest element in an array?</strong>
-                    <br>**Answer:** Iterate through the array, comparing each element to find the largest.
-                </li>
-            </ul>
-            <h3>Linked Lists</h3>
-            <ul>
-                <li><strong>How do you reverse a linked list?</strong>
-                    <br>**Answer:** Iterate through the list and adjust the pointers to reverse the direction of the links.
-                </li>
-                <li><strong>What are the advantages of linked lists over arrays?</strong>
-                    <br>**Answer:** Linked lists allow for dynamic sizing and efficient insertions and deletions at any position.
-                </li>
-            </ul>
-            <h3>Stacks</h3>
-            <ul>
-                <li><strong>Explain the use of stacks in programming.</strong>
-                    <br>**Answer:** Stacks are used for function calls, backtracking algorithms, and undo mechanisms.
-                </li>
-                <li><strong>How can you implement a stack using an array?</strong>
-                    <br>**Answer:** Use an array to store the elements and maintain an index to represent the top of the stack.
-                </li>
-            </ul>
-            <h3>Queues</h3>
-            <ul>
-                <li><strong>What is a circular queue?</strong>
-                    <br>**Answer:** A circular queue connects the end of the queue back to the beginning, optimizing space utilization.
-                </li>
-                <li><strong>How can you implement a queue using two stacks?</strong>
-                    <br>**Answer:** Use two stacks to manage enqueue and dequeue operations, transferring elements as needed.
-                </li>
-            </ul>
+            <p class="question" onclick="toggleAnswer(this)">Q1. What is the difference between an Array and a Linked List?</p>
+            <p class="answer">A1. Arrays have fixed sizes and allow constant time access to elements, but resizing is challenging. Linked Lists, on the other hand, offer dynamic resizing, but accessing elements requires traversing nodes sequentially.</p>
+
+            <p class="question" onclick="toggleAnswer(this)">Q2. Can you explain the concept of Time Complexity?</p>
+            <p class="answer">A2. Time Complexity refers to the time required by an algorithm to complete based on the size of its input. It helps in understanding the efficiency of an algorithm, especially for large inputs.</p>
+
+            <p class="question" onclick="toggleAnswer(this)">Q3. Describe a real-world scenario where you would use a Queue.</p>
+            <p class="answer">A3. A Queue can be used in job scheduling systems, where tasks are processed in the order they arrive, ensuring fairness by following the First In, First Out principle.</p>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
-
     <script>
-        const coll = document.getElementsByClassName("collapsible");
-        for (let i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                const content = this.nextElementSibling;
-                this.classList.toggle("active");
-                const isActive = content.style.display === "block";
-                content.style.display = isActive ? "none" : "block";
-                this.setAttribute("aria-expanded", !isActive);
+        // Collapsible sections for topics
+        document.querySelectorAll(".collapsible").forEach(button => {
+            button.addEventListener("click", () => {
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
             });
+        });
+
+        // Toggle answer for interview questions
+        function toggleAnswer(questionElement) {
+            const answerElement = questionElement.nextElementSibling;
+            answerElement.style.display = answerElement.style.display === "block" ? "none" : "block";
         }
     </script>
 </body>

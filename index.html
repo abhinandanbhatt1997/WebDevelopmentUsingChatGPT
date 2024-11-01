@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Structures and Algorithms Course</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="path_to_favicon.ico" type="image/x-icon">
@@ -23,7 +23,6 @@
             background-color: var(--background-color);
             color: var(--text-color);
             transition: background 0.5s;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         header {
             background-color: var(--header-footer-color);
@@ -84,7 +83,6 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
-            touch-action: manipulation; /* Improve touch responsiveness */
         }
         .hero button:hover {
             background-color: #1e88e5; /* Change to a slightly darker color on hover */
@@ -106,13 +104,6 @@
             margin: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
             overflow: hidden;
-            cursor: pointer; /* Indicate that the card is clickable */
-        }
-        .card a {
-            display: block; /* Make the entire card clickable */
-            color: inherit; /* Inherit text color from parent */
-            text-decoration: none; /* Remove underline from links */
-            height: 100%; /* Fill the card */
         }
         .card img {
             width: 100%;
@@ -151,11 +142,6 @@
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 1200px) {
-            .card {
-                width: 45%; /* Adjust card width for medium screens */
-            }
-        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
@@ -164,10 +150,7 @@
                 margin: 0 10px;
             }
             .card {
-                width: 90%; /* Full width on small screens */
-            }
-            .hero h2 {
-                font-size: 2rem; /* Adjust font size for small screens */
+                width: 90%;
             }
         }
     </style>
@@ -177,11 +160,11 @@
     <header>
         <h1>Data Structures and Algorithms Course</h1>
         <nav aria-label="Course Navigation">
-            <a href="unit1.html" target="_blank">Unit 1</a>
-            <a href="unit2.html" target="_blank">Unit 2</a>
-            <a href="unit3.html" target="_blank">Unit 3</a>
-            <a href="unit4.html" target="_blank">Unit 4</a>
-            <a href="unit5.html" target="_blank">Unit 5</a>
+            <a href="unit1.html">Unit 1</a>
+            <a href="unit2.html">Unit 2</a>
+            <a href="unit3.html">Unit 3</a>
+            <a href="unit4.html">Unit 4</a>
+            <a href="unit5.html">Unit 5</a>
         </nav>
     </header>
 
@@ -193,39 +176,29 @@
 
         <div class="card-container">
             <div class="card">
-                <a href="unit1.html" target="_blank"> <!-- Link to Unit 1 -->
-                    <img src="data_structure.jpeg" alt="Unit 1: Introduction to Data Structures" loading="lazy">
-                    <h3>Unit 1: Introduction to Data Structures</h3>
-                    <p>Explore the basics of data structures including arrays, linked lists, and stacks.</p>
-                </a>
+                <img src="data_structure.jpeg" alt="Unit 1: Introduction to Data Structures" loading="lazy">
+                <h3>Unit 1: Introduction to Data Structures</h3>
+                <p>Explore the basics of data structures including arrays, linked lists, and stacks.</p>
             </div>
             <div class="card">
-                <a href="unit2.html" target="_blank"> <!-- Link to Unit 2 -->
-                    <img src="ads.jpeg" alt="Unit 2: Advanced Data Structures" loading="lazy">
-                    <h3>Unit 2: Advanced Data Structures</h3>
-                    <p>Dive into balanced trees, heaps, and hash tables for efficient data management.</p>
-                </a>
+                <img src="ads.jpeg" alt="Unit 2: Advanced Data Structures" loading="lazy">
+                <h3>Unit 2: Advanced Data Structures</h3>
+                <p>Dive into balanced trees, heaps, and hash tables for efficient data management.</p>
             </div>
             <div class="card">
-                <a href="unit3.html" target="_blank"> <!-- Link to Unit 3 -->
-                    <img src="ga.jpeg" alt="Unit 3: Graph Algorithms" loading="lazy">
-                    <h3>Unit 3: Graph Algorithms</h3>
-                    <p>Learn about graph representations and algorithms like BFS, DFS, and Dijkstra's.</p>
-                </a>
+                <img src="ga.jpeg" alt="Unit 3: Graph Algorithms" loading="lazy">
+                <h3>Unit 3: Graph Algorithms</h3>
+                <p>Learn about graph representations and algorithms like BFS, DFS, and Dijkstra's.</p>
             </div>
             <div class="card">
-                <a href="unit4.html" target="_blank"> <!-- Link to Unit 4 -->
-                    <img src="ad.jpeg" alt="Unit 4: Algorithm Design Techniques" loading="lazy">
-                    <h3>Unit 4: Algorithm Design Techniques</h3>
-                    <p>Understand dynamic programming, greedy algorithms, and optimization techniques.</p>
-                </a>
+                <img src="ad.jpeg" alt="Unit 4: Algorithm Design Techniques" loading="lazy">
+                <h3>Unit 4: Algorithm Design Techniques</h3>
+                <p>Understand dynamic programming, greedy algorithms, and optimization techniques.</p>
             </div>
             <div class="card">
-                <a href="unit5.html" target="_blank"> <!-- Link to Unit 5 -->
-                    <img src="sa.jpeg" alt="Unit 5: Specialized Algorithms" loading="lazy">
-                    <h3>Unit 5: Specialized Algorithms</h3>
-                    <p>Master specialized algorithms including pattern matching and network flow methods.</p>
-                </a>
+                <img src="sa.jpeg" alt="Unit 5: Specialized Algorithms" loading="lazy">
+                <h3>Unit 5: Specialized Algorithms</h3>
+                <p>Master specialized algorithms including pattern matching and network flow methods.</p>
             </div>
         </div>
     </main>
